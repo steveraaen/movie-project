@@ -10,8 +10,30 @@ $(document).ready(function() {
         var curChoice;
         // ===========================================================
         // Click button to assign input value to searchVal, construct URL and run Ajax
+        
         $('#search').on('click', function() {
             searchVal = $('#name').val().trim();
+                 searchVal = searchVal.replace(" ", "_");
+            console.log(searchVal)
+            baseURL = 'http://imdb.wemakesites.net/api/search?q=' + searchVal + '&api_key=cfa2962b-0e94-49f0-a266-76045337173c'
+             console.log(baseURL)
+             baseAjax = $.ajax({
+                url: baseURL,
+                method: 'GET',
+                dataType: 'jsonp'
+            }).done(function(responseA) {
+                // ===========================================================
+                // Assign respA as shortcut to results.  Loop throgh response and display name, id & thumbnail 
+                respA = responseA.data.results.names;
+                console.log(respA)
+                for (var i = 0; i < respA.length; i++) {
+                    $('#searchContent').append(' <div class = "well row choices" id = "' + respA[i].id + '"><div class = "col-md-4">' + respA[i].title + '</div><div class = "col-md-4 actorID">' + respA[i].id + '</div><div class = "col-md-4"><img src ="' + respA[i].thumbnail + '"></div></div>')
+                    console.log(respA)
+                }
+            });
+        });
+        $('#name').on('keypress', function() {
+            searchVal = $('#nam e').val().trim();
                  searchVal = searchVal.replace(" ", "_");
             console.log(searchVal)
             baseURL = 'http://imdb.wemakesites.net/api/search?q=' + searchVal + '&api_key=cfa2962b-0e94-49f0-a266-76045337173c'
