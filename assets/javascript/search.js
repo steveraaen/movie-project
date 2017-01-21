@@ -37,16 +37,17 @@ $(document).ready(function() {
                 respA = responseA.data.results.names;
                 console.log(respA)
                 for (var i = 0; i< respA.length; i++) {
-                    $('#Page2').append(' <div class = "well row choices" id = "' + respA[i].id + '" data-actorname ="' + respA[i].title + 
-                    	'"><div class = "col-md-4">' + respA[i].title + '</div><div class = "col-md-4"><img src ="' + respA[i].thumbnail + '"></div></div>')
+                    $('#Page2').append(' <div class = "well row choices" id =" ' + respA[i].id+ '" ><div class = "col-md-4">' + respA[i].title + '</div><div class = "col-md-4"><img src ="' + respA[i].thumbnail + '"><button class= "info" id = "' + respA[i].id + '" data-actorname ="' + respA[i].title + 
+                        '">CLICK FOR MORE</button></div></div>')
                     console.log(respA)
                 }
             });
         });
         // ===========================================================
         // Event handler to assign the id of person clicked to curChoice variable & construct URL for new Ajax
-        $(document).on('click', '.choices', function() {
+        $(document).on('click', '.info', function() {
             curChoice = (this);
+            console.log(curChoice);
             ActorName = curChoice.dataset.actorname;
             console.log(ActorName);
             //console.log(curChoice);
@@ -63,19 +64,29 @@ $(document).ready(function() {
                // var id = $(curChoice).attr("id");
 
                 // ===========================================================
-                // Append description to description, loop through results & list all films            
-                $('#'+ thisVal).append(response.data.description);
+                // Append description to description, loop through results & list all films
+                 var youtube = $('<button class="trailer">');
+                        youtube.text("watch trailer");
+                        $('#'+ thisVal).parent().append(youtube);
+
+                $('#'+ thisVal).parent().append(response.data.description);
                 for (let i = 0; i < response.data.filmography.length; i++) {
-                    $("#" + thisVal).append(response.data.filmography[i].title + '<br>')
+                    $("#" + thisVal).parent().append(response.data.filmography[i].title + '<br>')
                 }
                 console.log(thisVal);
                 console.log(response);
                 console.log("about to make call");
-                youtubeCall();
+                
             })
         })
 
-    function youtubeCall() {
+    
+
+   $(document).on('click','.trailer',function() {
+            youtubeCall();
+   });
+
+         function youtubeCall() {
             function start() {
                 console.log("working");
                 console.log(thisVal);
@@ -99,7 +110,7 @@ $(document).ready(function() {
                         video.append(item.snippet.title);
                         video.append(item.snippet.description);
                         video.append('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + item.id.videoId + '" frameborder="0" allowfullscreen></iframe>');
-                        $('#'+ thisVal).append(video);
+                        $('#'+ thisVal).parent().append(video);
                     })
                 }, function(reason) {
                     console.log('Error: ' + reason.result.error.message);
@@ -109,7 +120,6 @@ $(document).ready(function() {
             gapi.load('client', start);
             // Loads the JavaScript client library and invokes `start` afterwards.
         }
+});
 
-
-    });
 
