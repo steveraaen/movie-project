@@ -17,6 +17,7 @@ $(document).ready(function() {
     var currentFilm;
     // ===========================================================
 
+
     // Click button to do search on the Initial Page
     $('#submit').on('click', function() {
         InitialSearch();
@@ -112,11 +113,13 @@ $(document).ready(function() {
         //click function that will load the movies on the screen when a movie from the list is clicked
     $(document).on('click', '.movieListItem', function() {
         $('.video').empty();
+
         currentFilm = (this).dataset.moviename;
         thisVal = (this).dataset.actorid;
         console.log(currentFilm);
         //$(this).siblings().dataset.moviename.toggle();
         youtubeCall();
+
     });
 
     function youtubeCall() {
@@ -131,7 +134,9 @@ $(document).ready(function() {
                 'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'],
             }).then(function() {
                 // Executes an API request, and returns a Promise.
-                // the methon name "language-tranlation.list" comes from the API discovery
+
+                // The method name `language.translations.list` comes from the API discovery.
+
                 var request = gapi.client.youtube.search.list({
                     q: query,
                     part: 'snippet'
@@ -139,26 +144,36 @@ $(document).ready(function() {
                 return request;
             }).then(function(response) {
                 console.log(response.result.items);
-                var videoDiv = $('<div class="videoDiv">');
+
+                var videoDiv = $('<span class="videoDiv">');
                 response.result.items.forEach(function(item) {
-                    var video = $('<span class="video">');
-                    video.append('<iframe class="youtubePlayer" width="130" height="auto" src="https://www.youtube.com/embed/' + item.id.videoId + '" frameborder="0" allowfullscreen></iframe>');
-                    videoDiv.append(video);
+                    // var video = $('<span class="video">');
+                    //video.append('<iframe class="youtubePlayer" width="130" height="auto" src="https://www.youtube.com/embed/' + item.id.videoId + '" frameborder="0" allowfullscreen></iframe>');
+                    //videoDiv.append(video);
+                    
+                    videoDiv.append('<img class="youtubeThumbnail" src="https://img.youtube.com/vi/'+item.id.videoId+'/default.jpg" data-videolink="https://www.youtube.com/embed/'+item.id.videoId+'">');
+                   
                 })
+
                 $('#' + thisVal).parent().append(videoDiv);
+
             }, function(reason) {
                 console.log('Error: ' + reason.result.error.message);
             });
         };
-        // Loads the JavaScript client library and invokes start afterwards.
+        // Loads the JavaScript client library and invokes `start` afterwards.
         gapi.load('client', start);
     }
-    $('.youtubePlayer').on('onStateChange', function() {
 
-        console.log("hello");
-    });
-    $(document).on('click', '.videoDiv', function(e) {
+
+
+    $(document).on('click', '.youtubeThumbnail', function(e){
+
         e.preventDefault();
+        console.log((this).dataset.videolink);
+        $('#modalplayer').attr("src",(this).dataset.videolink);
+        console.log((this).dataset.videolink);
         $('#modal-video').modal();
     });
+
 });
