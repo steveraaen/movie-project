@@ -11,3 +11,11 @@ body{
 #Page2{
 	display:none;
 }
+
+.movieListItem:hover {
+	color: green;
+	font-weight: bold;
+	font-size: 15px;
+	cursor: pointer;
+}
+
