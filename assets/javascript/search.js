@@ -15,6 +15,7 @@ var resp;
 var curChoice;
 var thisVal;
 var currentFilm;
+var movieID
 // ===========================================================
 
 // Click button to do search on the Initial Page
@@ -93,7 +94,9 @@ var ActorDescription = $('<div class="ActorDescriptionDiv">' + "Actor Descriptio
 ActorDescription.append('<div class="ActorDescription">' + response.data.description + '</div>');
 ActorDetailsDiv.append(ActorDescription);
 for (let i = 0; i < response.data.filmography.length; i++) {
-var movieListItem = $('<div class="movieListItem" data-moviename="' + response.data.filmography[i].title + '" data-actorid="'+ thisVal+'"></div>');
+    currentFilm = response.data.filmography[i].title;
+    movieID = thisVal + currentFilm.replace(/\s/g, '');
+var movieListItem = $('<div class="movieListItem" id="'+movieID+'" data-moviename="' + currentFilm + '" data-actorid="'+ thisVal+'" data-actorname="' + ActorName + '"></div>');
 movieListItem.text(response.data.filmography[i].title);
 ActorDetailsDiv.append(movieListItem);
 $("#" + thisVal).parent().append(ActorDetailsDiv);
@@ -114,6 +117,8 @@ $(document).on('click', '.movieListItem', function() {
         $('.videoDiv').empty();
         currentFilm = (this).dataset.moviename;
         thisVal = (this).dataset.actorid;
+        ActorName = (this).dataset.actorname;
+        movieID = (this).id;
         console.log(currentFilm);
         //$(this).siblings().dataset.moviename.toggle();
         youtubeCall();
@@ -140,17 +145,17 @@ $(document).on('click', '.movieListItem', function() {
                 return request;
             }).then(function(response) {
                 console.log(response.result.items);
-                var videoDiv = $('<span class="videoDiv">');
+                var videoDiv = $('<div class="videoDiv">');
                 response.result.items.forEach(function(item) {
-                    // var video = $('<span class="video">');
-                    //video.append('<iframe class="youtubePlayer" width="130" height="auto" src="https://www.youtube.com/embed/' + item.id.videoId + '" frameborder="0" allowfullscreen></iframe>');
-                    //videoDiv.append(video);
-                    
-                    videoDiv.append('<img class="youtubeThumbnail" src="https://img.youtube.com/vi/'+item.id.videoId+'/default.jpg" data-videolink="https://www.youtube.com/embed/'+item.id.videoId+'">');
+
+                        //add images and snippet into the videoDiv
+                    videoDiv.append('<div id="snippet">' + item.snippet.title + '</div>');
+                    videoDiv.append('<img class="youtubeThumbnail" src="https://img.youtube.com/vi/'+item.id.videoId+'/default.jpg" data-videolink="https://www.youtube.com/embed/'+item.id.videoId+'?enablejsapi=1">');
                    
                 })
-
-                $('#' + thisVal).parent().append(videoDiv);
+                    //append the videoDiv to the DOM
+                $('#' + movieID).append(videoDiv);
+                //$('#' + thisVal).parent().append(videoDiv);
 
             }, function(reason) {
                 console.log('Error: ' + reason.result.error.message);
@@ -160,6 +165,11 @@ $(document).on('click', '.movieListItem', function() {
         gapi.load('client', start);
     }
 
+
+        //Clears out the modal link when you click away from the player and stops background audio
+$('#modal-video').on('hidden.bs.modal', function () {
+  $('#modalplayer').attr("src","");
+})
 
     $(document).on('click', '.youtubeThumbnail', function(e){
         e.preventDefault();
