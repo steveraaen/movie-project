@@ -1,21 +1,63 @@
 #Page1{
 	text-align:center; 
-	padding:170px
-	color:white;
+	padding:170px;
+	
 }
 
 body{
-	/* background-image: url("./background.gif");
-	background-size:cover; */
+	background-image: url("./background5.gif");
+	background-size:cover;
+	color:white;
 }
 #Page2{
 	display:none;
 }
 
 .movieListItem:hover {
-	color: green;
+	color: #43b4da;
 	font-weight: bold;
-	font-size: 15px;
+	font-size: 25px;
 	cursor: pointer;
 }
+.info{
+	background-color:#43b4da;
+	padding:5px;
+	font-family: 'Bungee Shade', cursive;
+	font-size:15px;
+	color:white;
+}
 
+img{
+	width:100px;
+	height:100px;
+}
+
+#name{
+	width:30%;
+	clear:left;
+}
+.navbar-static-top{
+	margin: 0;
+    padding: 0;
+    top:0;
+    overflow: hidden;
+	position:fixed;
+
+}
+.well{
+	font-family: 'Bungee Shade', cursive;
+	color:black;
+}
+
+nav{
+position:fixed;
+
+}
+
+#search{
+	clear:left;
+	background-color:#efca19;"
+	color:white;
+	font-family: 'Bungee Shade', cursive;
+	 font-size:15px;
+}
