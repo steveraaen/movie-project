@@ -1,20 +1,129 @@
 #Page1{
 	text-align:center; 
-	padding:170px
-	color:white;
-}
 
-body{
-	/* background-image: url("./background.gif");
-	background-size:cover; */
+/*background: #A1FFCE; 
+background: -webkit-linear-gradient(to left, #A1FFCE, #FAFFD1);
+background: linear-gradient(to left, #A1FFCE, #FAFFD1);*/
+ background: #16A085; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #16A085 , #F4D03F); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #16A085 , #F4D03F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+       
+}
+#top{
+	float: top;
+		width: 100%;
+		padding-left: 45%;
+}
+.btn-md-inline-success{
+background-color: #F4D03F;
+}
+h1, h2, h3, h4{
+	font-family: 'Pangolin';
 }
 #Page2{
 	display:none;
 }
-
+body{
+}
+.logo{
+	float: right;
+	padding-right: 200px;
+	font-size: 24px;
+}
+.logoPic{
+	float: right;
+}
 .movieListItem:hover {
-	color: green;
+	color: #24A381;
 	font-weight: bold;
-	font-size: 15px;
+	font-size: 25px;
 	cursor: pointer;
+}
+.element{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 30px;
+}
+.info{
+	background-color:#24A381;
+	margin-left: 40px;
+font-family: 'Pangolin';
+	font-size:15px;
+	color:white;
+}
+.actordescription{
+	margin-bottom: 15px;
+}
+img{
+	width:100px;
+	height:100px;
+}
+
+#name{
+	width:30%;
+	clear:left;
+}
+.navbar-static-top{
+	margin: 0;
+    padding: 0;
+    top:0;
+    overflow: hidden;
+	position:fixed;
+color:#24A381;
+font-family: 'Pangolin';
+}
+.well{
+	font-family: 'Pangolin';
+	color:black;
+}
+
+nav{
+position:fixed;
+
+}
+
+#search{
+	clear:left;
+	background-color:#efca19;"
+	color:white;
+	font-family: 'Pangolin';
+	 font-size:15px;
+
+
+/***** Modal *****/
+ 
+.modal-backdrop.in {
+    filter: alpha(opacity=7);
+    opacity: 0.7;
+}
+ 
+.modal-content {
+    background: none;
+    border: 0;
+    -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+}
+ 
+.modal-body {
+    padding: 0 25px 25px 25px;
+}
+ 
+.modal-header {
+    padding: 25px 25px 15px 25px;
+    text-align: right;
+}
+ 
+.modal-header, .modal-footer {
+    border: 0;
+}
+ 
+.modal-header .close {
+    float: none;
+    margin: 0;
+    font-size: 36px;
+    color: #fff;
+    font-weight: 300;
+    text-shadow: none;
+    opacity: 1;
+
 }
