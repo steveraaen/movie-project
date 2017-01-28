@@ -1,15 +1,6 @@
 #Page1{
 	text-align:center; 
-<<<<<<< HEAD
-	padding:170px;
-	
-}
 
-body{
-	background-image: url("./background5.gif");
-	background-size:cover;
-	color:white;
-=======
 
 /*background: #A1FFCE; 
 background: -webkit-linear-gradient(to left, #A1FFCE, #FAFFD1);
@@ -29,7 +20,7 @@ background-color: #F4D03F;
 }
 h1, h2, h3, h4{
 	font-family: 'Pangolin';
->>>>>>> aa50ab535816d9741ddafa0299233817e049cabe
+
 }
 #Page2{
 	display:none;
@@ -45,26 +36,13 @@ body{
 	float: right;
 }
 .movieListItem:hover {
-<<<<<<< HEAD
-	color: #43b4da;
-=======
+
 	color: #24A381;
->>>>>>> aa50ab535816d9741ddafa0299233817e049cabe
 	font-weight: bold;
 	font-size: 25px;
 	cursor: pointer;
 }
-<<<<<<< HEAD
 
-.info{
-	background-color:#43b4da;
-	padding:5px;
-	font-family: 'Bungee Shade', cursive;
-	font-size:15px;
-	color:white;
-}
-
-=======
 .element{
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -80,7 +58,7 @@ font-family: 'Pangolin';
 .actordescription{
 	margin-bottom: 15px;
 }
->>>>>>> aa50ab535816d9741ddafa0299233817e049cabe
+
 img{
 	width:100px;
 	height:100px;
@@ -96,18 +74,12 @@ img{
     top:0;
     overflow: hidden;
 	position:fixed;
-<<<<<<< HEAD
-
-}
-.well{
-	font-family: 'Bungee Shade', cursive;
-=======
-color:#24A381;
-font-family: 'Pangolin';
+	color:#24A381;
+	font-family: 'Pangolin';
 }
 .well{
 	font-family: 'Pangolin';
->>>>>>> aa50ab535816d9741ddafa0299233817e049cabe
+
 	color:black;
 }
 
@@ -120,12 +92,8 @@ position:fixed;
 	clear:left;
 	background-color:#efca19;"
 	color:white;
-<<<<<<< HEAD
-	font-family: 'Bungee Shade', cursive;
-=======
 	font-family: 'Pangolin';
->>>>>>> aa50ab535816d9741ddafa0299233817e049cabe
-	 font-size:15px;
+	font-size:15px;
 
 
 /***** Modal *****/
