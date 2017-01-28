@@ -106,12 +106,13 @@ $(document).ready(function() {
                     ActorDescription.append('<div class="ActorDescription">' + response.data.description + '</div>');
                     ActorDetailsDiv.append(ActorDescription);
                     for (let i = 0; i < response.data.filmography.length; i++) {
-                        goodPic = response.data.image;
+                        // goodPic = response.data.image;
                         currentFilm = response.data.filmography[i].title;
                         movieID = thisVal + currentFilm.replace(/\s/g, '');
                         var movieListItem = $('<div class="row movieListItem well"></div>');
+                        var movieListItem = $('<div class="row movieListItem well" id="'+movieID+'" data-moviename="' + currentFilm + '" data-actorid="'+ thisVal+'" data-actorname="' + ActorName + '"></div>');
                         movieListItem.text(response.data.filmography[i].title);
-                        movieListItem.attr('src', response.data.image);
+                        // movieListItem.attr('src', response.data.image);
                         ActorDetailsDiv.append(movieListItem);
                         $("#" + thisVal).parent().append(ActorDetailsDiv);
                         console.log(response);
