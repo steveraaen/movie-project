@@ -1,107 +1,93 @@
 <html>
 <!DOCTYPE html>
 <html lang="en-us">
+<body>
 <head>
-
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <title>Movie Project </title>
     <!-- boostrap and jquery source link -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <!-- youtube api -->
     <script src="https://apis.google.com/js/api.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/typed.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  <!--   link to javascript  -->
-    <script src="assets/javascript/search.js"></script>
-
+    <!--   link to javascript  -->
+    <script src="assets/javascript/search2.js"></script>
 </head>
-
-<body >
-    <div id="Page1" style="text-align:center; padding:175px; font-family: 'Bungee Shade', cursive; font-size:20px;">
-	<div id="searchbox" class="row">
-  <div class="col-md-12">
-  		<h1>LIMELIGHT</h1>
-  		<form>
-          <span id="new-actor">Type in favorite actor: <input id="actor" type="text" ></span>
-        </form>
-        <br></br>
-  		<p><a class="btn btn-primary btn-lg" id="submit" href="#" role="button" onclick="return show('Page2','Page1');" style="background-color:#efca19;">Submit</a></p>
-	</div>
-  </div>
-  </div>
-
-
-
-	<!-- information from search will be displayed here...make this a new upload page..this the placeholder for the info from imbd -->
-
+<div id="top"><img src="assets/css/lime.png" class="lime" style="height: 240px; width: 190px"></div>
+<div id="Page1" style="text-align:center; padding:20px; color:black; font-family: 'Pangolin'; font-size:20px;">
+    <div class="element"></div>
+    <div id="searchbox" class="row">
+        <div class="col-md-12">
+            <h1>LIMELIGHT</h1>
+            <form class="form-inline" role="form">
+                <span id="new-actor">Pick an actor.  Any actor! <input id="actor" type="text" ></span>
+                <a class="btn btn-md-inline-success" id="submit" href="#" role="button" onclick="return show('Page2','Page1');">Submit</a>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- information from search will be displayed here...make this a new upload page..this the placeholder for the info from imbd -->
 <div class="container">
     <div class="row">
-      <div class= "col-lg-12">
-        <div id="Page2" >
-          <nav class="navbar navbar-default navbar-static-top" >
-            <div class="container">
-              LIMELIGHT    
-            </div>
-            <label class="sr-only" for="name">Actor Name:</label>
-            <input type="input" class="form-control" id="name" >
-          <div id="search" class="btn btn-md">Search</div>
-       </form>
-          </nav>
+        <div class="col-lg-12">
+            <div id="Page2">
+                <nav class="navbar navbar-default navbar-static-top" style="background-color: white;">
+                    <form >
+                    <label class="sr-only" for="name">Actor Name:</label>
+                    <input type="input" class="form-control-inline" id="name">
+                     <div id="search" class="btn btn-md-inline">Search</div>
+            </form>
+            <div class="logo">
+                <h4>Limelight</h4>
+                </div>
+                <div class="logoPic"><img src="assets/css/lime.png" class="lime" style="height: 50px; width: 50px"></div>
+            
+            </nav>
         </div>
-            <div id = "searchContent">
-              <div id = "actors"></div>
-            </div>  
-          </div>
-      
-          
-
-
-        <!-- Top content -->
-        <div class="top-content">
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-sm-8 col-sm-offset-2 video-link medium-paragraph">
-                        <a href class="launch-modal" data-modal-id="modal-video">
-                            <span class="video-link-icon"><i class="fa fa-play"></i></span> 
-                            <span class="video-link-text"></span>
-                        </a>
-                    </div>
+        <div id="searchContent">
+            <div id="actors"></div>
+        </div>
+    </div>
+    <!-- Top content -->
+    <div class="top-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 video-link medium-paragraph">
+                    <a href class="launch-modal" data-modal-id="modal-video">
+                        <span class="video-link-icon"><i class="fa fa-play"></i></span>
+                        <span class="video-link-text"></span>
+                    </a>
                 </div>
             </div>
-        </div>  
-        <!-- MODAL -->
-        <div class="modal fade" id="modal-video" tabindex="-1" role="dialog" aria-labelledby="modal-video-label">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="modal-video">
-
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" id="modalplayer" src="https://player.vimeo.com/video/84910153?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;color=e89a3e"
-                                    webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-
-                            </div>
+        </div>
+    </div>
+    <!-- MODAL -->
+    <div class="modal fade" id="modal-video" tabindex="-1" role="dialog" aria-labelledby="modal-video-label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-video">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" id="modalplayer" src="https://player.vimeo.com/video/84910153?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;color=e89a3e" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
+    </div>
 </body>
-
 </html>
